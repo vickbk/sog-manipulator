@@ -6,8 +6,10 @@ import { CSSProperties } from "react";
 
 export default function ManipulatorList({
   modifiers,
+  removeModifier,
 }: {
   modifiers: ModifierType[];
+  removeModifier: (id: number) => void;
 }) {
   return (
     <section>
@@ -15,12 +17,12 @@ export default function ManipulatorList({
       <ul className="flex flex-wrap gap-4">
         {modifiers.map(({ text, replacement }, key) => (
           <li className="manipulator" key={key}>
-            <button className="manipulator__element">
+            <button className="manipulator__element active">
               {text} <ArrowLeftRight /> {replacement}
             </button>
             <div className="manipulator__overlay">
               <button
-                className="p-2 blue-900 rounded-lg"
+                className="p-2 blue-900 rounded-lg active"
                 type="button"
                 style={{ "--bg-accent": 1 } as CSSProperties}
               >
@@ -28,9 +30,10 @@ export default function ManipulatorList({
                 <span className="sr-only">Edit modifier</span>
               </button>
               <button
-                className="p-2 blue-900 rounded-lg text-red-500"
+                className="active p-2 blue-900 rounded-lg text-red-500"
                 type="button"
                 style={{ "--bg-accent": 1 } as CSSProperties}
+                onClick={() => removeModifier(key)}
               >
                 <TrashIcon />
                 <span className="sr-only">Delete Modifier</span>

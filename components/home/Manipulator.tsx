@@ -14,7 +14,9 @@ export default function Manipulator() {
     addModifier,
     null
   );
-
+  const removeModifier = (id: number) => {
+    setModifiers(modifiers.filter((_, key) => key !== id));
+  };
   useEffect(() => {
     if (!modState && modifier && !modifierExist(modifier, modifiers)) {
       setModifiers([...modifiers, modifier]);
@@ -31,7 +33,7 @@ export default function Manipulator() {
           name="text"
         ></textarea>
       </label>
-      <ManipulatorList modifiers={modifiers} />
+      <ManipulatorList removeModifier={removeModifier} modifiers={modifiers} />
       <form className="flex gap-4 items-center" action={addModifierAction}>
         <div className="grow">
           <InputWithLabel label="Text a remplacer" name="text" />
