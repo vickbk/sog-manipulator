@@ -1,0 +1,31 @@
+.manipulator {
+  @apply grow 
+  relative;
+}
+.manipulator__element {
+  @apply w-full 
+  flex gap-2 items-center justify-center 
+  border rounded-lg 
+  p-4;
+  &:hover,
+  &:active,
+  &:focus {
+    & ~ .manipulator__overlay {
+      @apply scale-100;
+    }
+  }
+}
+
+.manipulator__overlay {
+  @apply absolute inset-0
+  rounded-lg 
+  flex gap-1 
+  justify-evenly items-center
+  scale-0 
+  transition-transform duration-300;
+  background-color: hsl(var(--foreground) / 0.25);
+  &:focus-within,
+  &:hover {
+    @apply scale-100;
+  }
+}

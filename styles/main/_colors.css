@@ -6,15 +6,15 @@
 }
 
 .blue-900 {
-  background-color: hsl(var(--blue-900) / var(--bg-accent, 1));
+  background-color: hsl(var(--background) / var(--bg-accent, 1));
 }
 .c-blue-900 {
-  color: hsl(var(--blue-900) / var(--txt-accent, 1));
+  color: hsl(var(--background) / var(--txt-accent, 1));
 }
 
 .white {
-  background-color: hsl(var(--white) / var(--bg-accent, 1));
+  background-color: hsl(var(--foreground) / var(--bg-accent, 1));
 }
 .c-white {
-  color: hsl(var(--white) / var(--txt-accent, 1));
+  color: hsl(var(--foreground) / var(--txt-accent, 1));
 }
