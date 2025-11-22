@@ -1,3 +1,13 @@
+import Manipulator from "./Manipulator";
+
 export default function MainPage() {
-  return <main></main>;
+  return (
+    <main>
+      <article>
+        <article></article>
+
+        <Manipulator />
+      </article>
+    </main>
+  );
 }
