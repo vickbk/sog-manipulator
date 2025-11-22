@@ -15,7 +15,9 @@
     "incremental": true,
     "paths": {
       "@/*": ["./src/*"],
-      "@components/*": ["./components/*"]
+      "@components/*": ["./components/*"],
+      "@actions/*": ["./actions/*"],
+      "@lib/*": ["./lib/*"]
     },
     "plugins": [
       {
