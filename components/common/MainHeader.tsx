@@ -1,7 +1,9 @@
 export default function MainHeader() {
   return (
     <header>
-      <h1>Welcome to the SOG Text manipulator app</h1>
+      <h1 className="text-3xl text-center text-bold c-blue-300">
+        Bienvenue au manipulateur de text SOG
+      </h1>
     </header>
   );
 }

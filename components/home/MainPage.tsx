@@ -1,13 +1,13 @@
+import MainContainer from "@components/common/MainContainer";
 import Manipulator from "./Manipulator";
 
 export default function MainPage() {
   return (
-    <main>
+    <MainContainer>
       <article>
-        <article></article>
-
         <Manipulator />
+        <article></article>
       </article>
-    </main>
+    </MainContainer>
   );
 }

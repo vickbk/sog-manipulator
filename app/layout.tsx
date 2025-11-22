@@ -8,7 +8,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="justify-center gap-12 py-12">
         <MainHeader />
         {children}
       </body>
