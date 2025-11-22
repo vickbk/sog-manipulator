@@ -1,0 +1,24 @@
+.header {
+  @apply p-8 
+  mb-auto 
+  flex justify-between items-center 
+  relative overflow-x-hidden;
+  @media (width >= 40em) {
+    @apply pl-8 p-0;
+  }
+  @media (width >= 48em) {
+    @apply pl-16 mt-8;
+  }
+}
+
+.header__filler {
+  @apply hidden;
+  @media (width >= 48em) {
+    @apply block 
+    h-px px-4
+    grow 
+    translate-x-8 
+    z-20;
+    background-color: hsl(var(--foreground) / 0.2);
+  }
+}

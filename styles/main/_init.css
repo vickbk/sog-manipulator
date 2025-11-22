@@ -1,0 +1,53 @@
+:root {
+  /* Primary */
+  --blue-900: 230 35% 7%;
+  --blue-300: 231 77% 90%;
+  --white: 0 0% 100%;
+
+  /* System */
+  --background: var(--blue-900);
+  --foreground: var(--white);
+
+  /* accent colors */
+  --accent-color: var(--blue-300);
+  --link-color: var(--blue-300);
+  /* @media (prefers-color-scheme: dark) {
+    --background: var(--blue-950);
+    --foreground: var(--grey-50);
+  } */
+
+  /* Fonts */
+  --ff-barlow-cond: "Barlow Condensed", sans-serif;
+  --ff-barlow: "Barlow", sans-serif;
+  --ff-bellefair: "Bellefair", serif;
+}
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --font-sans: var(--bellefair);
+  --font-mono: var(--ff-barlow);
+}
+
+/* Styles for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none; /* Disable animations */
+    transition: none; /* Disable transitions */
+    transform: none; /* Reset any transform properties */
+  }
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--ff-barlow);
+  line-height: 1.6;
+  @apply font-normal 
+  flex flex-col
+  min-h-screen;
+}
+
+button {
+  @apply cursor-pointer;
+}

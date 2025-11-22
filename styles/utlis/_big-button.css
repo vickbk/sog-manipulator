@@ -1,0 +1,33 @@
+.big-button {
+  @apply grid relative place-items-center 
+  px-8 sm:px-12
+  uppercase
+  aspect-square rounded-full 
+  md:place-self-end;
+  background-color: hsl(var(--foreground));
+  color: hsl(var(--background));
+  font-family: var(--ff-bellefair);
+  font-size: clamp(1.5rem, 1.0714rem + 2.2857vw, 2.5rem);
+
+  &:focus,
+  &:hover,
+  &:active {
+    @apply transition-colors duration-300;
+    color: hsl(var(--background) / 0.7);
+    &::before {
+      @apply scale-100 opacity-100;
+    }
+  }
+  &::before {
+    @apply absolute 
+    w-full aspect-square 
+    rounded-full
+    outline-64 sm:outline-96
+    scale-0
+    duration-300 
+    opacity-0 ease-in-out;
+    content: "";
+    outline-color: hsl(var(--foreground) / 0.1);
+    transition-property: scale, opacity, color;
+  }
+}

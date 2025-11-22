@@ -1,0 +1,13 @@
+.crew__choice {
+  @apply p-2 rounded-full;
+  background-color: hsl(var(--white) / var(--choice-accent, 0.4));
+  &:hover,
+  &:active,
+  &:focus {
+    --choice-accent: 0.6;
+  }
+}
+
+.crew__choice[data-current="true"] {
+  --choice-accent: 1;
+}

@@ -1,0 +1,20 @@
+.blue-300 {
+  background-color: hsl(var(--blue-300) / var(--bg-accent, 1));
+}
+.c-blue-300 {
+  color: hsl(var(--blue-300) / var(--txt-accent, 1));
+}
+
+.blue-900 {
+  background-color: hsl(var(--blue-900) / var(--bg-accent, 1));
+}
+.c-blue-900 {
+  color: hsl(var(--blue-900) / var(--txt-accent, 1));
+}
+
+.white {
+  background-color: hsl(var(--white) / var(--bg-accent, 1));
+}
+.c-white {
+  color: hsl(var(--white) / var(--txt-accent, 1));
+}

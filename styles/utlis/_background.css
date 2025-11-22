@@ -1,0 +1,20 @@
+.bg-img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: var(
+    --mobile-img,
+    url(/assets/crew/background-crew-mobile.jpg)
+  );
+  @media (width >= 36em) {
+    background-image: var(
+      --tablet-img,
+      url(/assets/crew/background-crew-tablet.jpg)
+    );
+  }
+  @media (width >= 48em) {
+    background-image: var(
+      --desktop-img,
+      url(/assets/crew/background-crew-desktop.jpg)
+    );
+  }
+}

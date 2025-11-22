@@ -1,0 +1,19 @@
+.tech {
+  @media (width >= 48em) {
+    @apply grid grid-cols-2;
+  }
+}
+.tech__choice {
+  @apply px-5 lg:px-7 aspect-square rounded-full;
+  border: 0.1em solid hsl(var(--foreground) / var(--choice-accent, 0.5));
+  color: hsl(var(--foreground));
+  &[data-current="true"] {
+    background-color: hsl(var(--foreground));
+    color: hsl(var(--background));
+  }
+  &:hover,
+  &:active,
+  &:focus {
+    --choice-accent: 0.8;
+  }
+}

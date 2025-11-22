@@ -1,0 +1,34 @@
+.title-big {
+  @apply uppercase;
+  font-family: var(--ff-barlow-cond);
+  /* font-size: clamp(1.5rem, 1.3239rem + 0.7512vw, 2rem); */
+  font-size: clamp(1.5rem, 1.0714rem + 2.2857vw, 2.5rem);
+}
+.normal-title {
+  @apply text-2xl uppercase  py-8;
+  color: hsl(var(--white) / 0.6);
+}
+.focus,
+.normal-title {
+  font-family: var(--ff-bellefair);
+}
+.title-big .focus {
+  color: hsl(var(--white));
+  /* font-size: clamp(5rem, 2rem + 16vw, 12rem); */
+  font-size: clamp(5rem, 2.8571rem + 11.4286vw, 10rem);
+}
+
+.normal-title .focus {
+  color: hsl(var(--white) / 1);
+  font-size: clamp(2rem, 1.6479rem + 1.5023vw, 3rem);
+}
+.page-title {
+  @apply uppercase 
+  flex justify-center 
+  gap-8 
+  sm:justify-start
+  col-span-full;
+  color: hsl(var(--white));
+  font-family: var(--ff-barlow-cond);
+  font-size: clamp(1.5rem, 1.3239rem + 0.7512vw, 2rem);
+}
