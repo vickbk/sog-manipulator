@@ -5,15 +5,18 @@ import TrashIcon from "@components/common/icons/TrashIcon";
 import { ModifierType } from "@lib/types/modifier-types";
 import { CSSProperties, useState } from "react";
 import HistoryManipulators from "./HistoryManipulators";
+import ModifierElement from "@components/common/ModifierElement";
 
 export default function ManipulatorList({
   modifiers,
   removeModifier,
   editModifier,
+  addHistoryModifier,
 }: {
   modifiers: ModifierType[];
   removeModifier: (id: number) => void;
   editModifier: (id: number) => void;
+  addHistoryModifier: (modifier: ModifierType) => void;
 }) {
   const [showHistory, setShowHistory] = useState(false);
   return (
@@ -29,34 +32,20 @@ export default function ManipulatorList({
           liste de manipulateur utilisés auparavant.
         </span>
       </button>
-      {showHistory && <HistoryManipulators hideHistory={setShowHistory} />}
+      {showHistory && (
+        <HistoryManipulators
+          hideHistory={setShowHistory}
+          addModifier={addHistoryModifier}
+        />
+      )}
       <ul className="flex flex-wrap gap-4 grow">
-        {modifiers.map(({ text, replacement }, key) => (
-          <li className="manipulator" key={key}>
-            <button className="manipulator__element active">
-              {text} <ArrowLeftRight /> {replacement}
-            </button>
-            <div className="manipulator__overlay">
-              <button
-                className="p-2 blue-900 rounded-lg active"
-                type="button"
-                style={{ "--bg-accent": 1 } as CSSProperties}
-                onClick={() => editModifier(key)}
-              >
-                <PencilIcon />
-                <span className="sr-only">Edit modifier</span>
-              </button>
-              <button
-                className="active p-2 blue-900 rounded-lg text-red-500"
-                type="button"
-                style={{ "--bg-accent": 1 } as CSSProperties}
-                onClick={() => removeModifier(key)}
-              >
-                <TrashIcon />
-                <span className="sr-only">Delete Modifier</span>
-              </button>
-            </div>
-          </li>
+        {modifiers.map((modifier, key) => (
+          <ModifierElement
+            modifier={modifier}
+            modifierKey={key}
+            editModifier={editModifier}
+            removeModifier={removeModifier}
+          />
         ))}
       </ul>
     </section>

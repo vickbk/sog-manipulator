@@ -2,16 +2,22 @@ import XIcon from "@components/common/icons/XIcon";
 import getMemoItem from "@lib/memorization/get-item";
 import { useEffect, useRef, useState } from "react";
 import ModifiersHistory from "./ModifiersHistory";
+import {
+  HistoryModifierAddFunction,
+  ModifierType,
+} from "@lib/types/modifier-types";
 
 export default function HistoryManipulators({
   hideHistory,
+  addModifier,
 }: {
   hideHistory: (hide: false) => void;
+  addModifier: HistoryModifierAddFunction;
 }) {
   const dialogElement = useRef<HTMLDialogElement>(null);
   const [display, setDisplay] = useState<"modifiers" | "mixes">("modifiers");
   const displays = {
-    modifiers: <ModifiersHistory />,
+    modifiers: <ModifiersHistory addModifier={addModifier} />,
     mixes: <></>,
   };
   useEffect(() => {

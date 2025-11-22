@@ -23,6 +23,11 @@ export default function Manipulator() {
     setModEdit(modifiers[id]);
     removeModifier(id);
   };
+  const addHistoricalModifier = (modifier: ModifierType) => {
+    if (!modifierExist(modifier, modifiers)) {
+      setModifiers([...modifiers, modifier]);
+    }
+  };
   useEffect(() => {
     if (!modState && modifier && !modifierExist(modifier, modifiers)) {
       setModifiers([...modifiers, modifier]);
@@ -44,6 +49,7 @@ export default function Manipulator() {
         removeModifier={removeModifier}
         editModifier={editModifier}
         modifiers={modifiers}
+        addHistoryModifier={addHistoricalModifier}
       />
       <form className="flex gap-4 items-center" action={addModifierAction}>
         <div className="grow">

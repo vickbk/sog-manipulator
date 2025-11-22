@@ -1,10 +1,17 @@
 import ModifierElement from "@components/common/ModifierElement";
 import getMemoItem from "@lib/memorization/get-item";
 import setMemoItem from "@lib/memorization/set-item";
-import { ModifierType } from "@lib/types/modifier-types";
+import {
+  HistoryModifierAddFunction,
+  ModifierType,
+} from "@lib/types/modifier-types";
 import { useEffect, useState } from "react";
 
-export default function ModifierHistory() {
+export default function ModifierHistory({
+  addModifier,
+}: {
+  addModifier: HistoryModifierAddFunction;
+}) {
   const [modifiers, setModifiers] = useState<ModifierType[]>([]);
   const removeModifier = (id: number) => {
     const remaining = modifiers.filter((_, key) => key !== id);
@@ -21,6 +28,7 @@ export default function ModifierHistory() {
           modifier={modifier}
           modifierKey={key}
           removeModifier={removeModifier}
+          addModifier={addModifier}
         />
       ))}
     </ul>
