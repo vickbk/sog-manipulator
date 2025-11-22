@@ -1,8 +1,10 @@
 import ArrowLeftRight from "@components/common/icons/ArrowLeftRight";
+import ClockIcon from "@components/common/icons/ClockIcon";
 import PencilIcon from "@components/common/icons/PencilIcon";
 import TrashIcon from "@components/common/icons/TrashIcon";
 import { ModifierType } from "@lib/types/modifier-types";
-import { CSSProperties } from "react";
+import { CSSProperties, useState } from "react";
+import HistoryManipulators from "./HistoryManipulators";
 
 export default function ManipulatorList({
   modifiers,
@@ -13,10 +15,22 @@ export default function ManipulatorList({
   removeModifier: (id: number) => void;
   editModifier: (id: number) => void;
 }) {
+  const [showHistory, setShowHistory] = useState(false);
   return (
-    <section>
+    <section className="flex items-center gap-4">
       <h3 className="sr-only">Liste de modificateurs selectionnés</h3>
-      <ul className="flex flex-wrap gap-4">
+      <button
+        type="button"
+        onClick={() => setShowHistory(!showHistory)}
+        className="active p-4 border rounded-lg"
+      >
+        <ClockIcon />{" "}
+        <span className="sr-only">
+          liste de manipulateur utilisés auparavant.
+        </span>
+      </button>
+      {showHistory && <HistoryManipulators hideHistory={setShowHistory} />}
+      <ul className="flex flex-wrap gap-4 grow">
         {modifiers.map(({ text, replacement }, key) => (
           <li className="manipulator" key={key}>
             <button className="manipulator__element active">
