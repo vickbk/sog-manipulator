@@ -14,12 +14,19 @@ export default function Manipulator() {
     addModifier,
     null
   );
+  const [modEdit, setModEdit] = useState<ModifierType | null>(null);
+
   const removeModifier = (id: number) => {
     setModifiers(modifiers.filter((_, key) => key !== id));
+  };
+  const editModifier = (id: number) => {
+    setModEdit(modifiers[id]);
+    removeModifier(id);
   };
   useEffect(() => {
     if (!modState && modifier && !modifierExist(modifier, modifiers)) {
       setModifiers([...modifiers, modifier]);
+      setModEdit(null);
     }
   }, [modifier, modState]);
   return (
@@ -33,11 +40,23 @@ export default function Manipulator() {
           name="text"
         ></textarea>
       </label>
-      <ManipulatorList removeModifier={removeModifier} modifiers={modifiers} />
+      <ManipulatorList
+        removeModifier={removeModifier}
+        editModifier={editModifier}
+        modifiers={modifiers}
+      />
       <form className="flex gap-4 items-center" action={addModifierAction}>
         <div className="grow">
-          <InputWithLabel label="Text a remplacer" name="text" />
-          <InputWithLabel label="Remplacer avec" name="replacement" />
+          <InputWithLabel
+            label="Text a remplacer"
+            name="text"
+            defaultValue={modEdit?.text}
+          />
+          <InputWithLabel
+            label="Remplacer avec"
+            name="replacement"
+            defaultValue={modEdit?.replacement}
+          />
         </div>
         <button className="border active rounded-lg p-4 ">
           <PlusIcon /> <span className="sr-only">Ajouter manipulateur</span>

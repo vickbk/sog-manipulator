@@ -7,9 +7,11 @@ import { CSSProperties } from "react";
 export default function ManipulatorList({
   modifiers,
   removeModifier,
+  editModifier,
 }: {
   modifiers: ModifierType[];
   removeModifier: (id: number) => void;
+  editModifier: (id: number) => void;
 }) {
   return (
     <section>
@@ -25,6 +27,7 @@ export default function ManipulatorList({
                 className="p-2 blue-900 rounded-lg active"
                 type="button"
                 style={{ "--bg-accent": 1 } as CSSProperties}
+                onClick={() => editModifier(key)}
               >
                 <PencilIcon />
                 <span className="sr-only">Edit modifier</span>

@@ -1,9 +1,11 @@
 export default function InputWithLabel({
   label,
   name,
+  defaultValue,
 }: {
   label: string;
   name?: string;
+  defaultValue?: string;
 }) {
   return (
     <label className="c-input">
@@ -12,6 +14,7 @@ export default function InputWithLabel({
         type="text"
         placeholder=""
         name={name || "name"}
+        defaultValue={defaultValue}
       />
       <span className="c-input__label">{label}</span>
     </label>
