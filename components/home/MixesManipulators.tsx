@@ -14,6 +14,14 @@ export default function MixesManipulators() {
     setMixes(remaining);
   };
 
+  const deleteMixModifier = (mixId: number, modId: number) => {
+    const mix = mixes[mixId];
+    mix.modifiers = mix.modifiers.filter((_, key) => key !== modId);
+    const newMixes = [...mixes];
+    setMixes(newMixes);
+    setModMixes(newMixes);
+  };
+
   useEffect(() => {
     setMixes(getModMixes());
   }, []);
@@ -28,12 +36,12 @@ export default function MixesManipulators() {
           >
             <h5>{name}</h5>
             <ul className="py-4 flex gap-4 flex-wrap">
-              {modifiers.map((modifier, key) => (
+              {modifiers.map((modifier, modKey) => (
                 <ModifierElement
-                  key={key}
+                  key={modKey}
                   modifier={modifier}
-                  modifierKey={key}
-                  removeModifier={(key) => {}}
+                  modifierKey={modKey}
+                  removeModifier={(modKey) => deleteMixModifier(key, modKey)}
                 />
               ))}
             </ul>
