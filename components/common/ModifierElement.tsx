@@ -32,7 +32,7 @@ export default function ModifierElement({
             onClick={() => addModifier({ text, replacement })}
           >
             <PlusIcon />
-            <span className="sr-only">Add modifier</span>
+            <span className="sr-only">Ajouter le manipulateur</span>
           </button>
         )}
         {editModifier && (
@@ -43,7 +43,7 @@ export default function ModifierElement({
             onClick={() => editModifier(key)}
           >
             <PencilIcon />
-            <span className="sr-only">Edit modifier</span>
+            <span className="sr-only">Modifier le manipulateur</span>
           </button>
         )}
         <button
@@ -53,7 +53,7 @@ export default function ModifierElement({
           onClick={() => removeModifier(key)}
         >
           <TrashIcon />
-          <span className="sr-only">Delete Modifier</span>
+          <span className="sr-only">Supprimer le manipulateur</span>
         </button>
       </div>
     </li>

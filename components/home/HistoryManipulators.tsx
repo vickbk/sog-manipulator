@@ -8,6 +8,7 @@ import {
 } from "@lib/types/modifier-types";
 import CustomDialog from "@components/common/CustomDialog";
 import DialogCloser from "@components/common/DialogCloser";
+import MixesManipulators from "./MixesManipulators";
 
 export default function HistoryManipulators({
   showHistory: hideHistory,
@@ -19,7 +20,7 @@ export default function HistoryManipulators({
   const [display, setDisplay] = useState<"modifiers" | "mixes">("modifiers");
   const displays = {
     modifiers: <ModifiersHistory addModifier={addModifier} />,
-    mixes: <></>,
+    mixes: <MixesManipulators />,
   };
   return (
     <CustomDialog
