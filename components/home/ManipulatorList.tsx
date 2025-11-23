@@ -56,7 +56,9 @@ export default function ManipulatorList({
           addModifier={addHistoryModifier}
         />
       )}
-      {showSave && <SaveModifier />}
+      {showSave && (
+        <SaveModifier showSaveForm={setShowSave} modifiers={modifiers} />
+      )}
       <ul className="flex flex-wrap gap-4 grow">
         {modifiers.map((modifier, key) => (
           <ModifierElement

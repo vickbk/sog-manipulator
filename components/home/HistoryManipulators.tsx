@@ -21,9 +21,6 @@ export default function HistoryManipulators({
     modifiers: <ModifiersHistory addModifier={addModifier} />,
     mixes: <></>,
   };
-  useEffect(() => {
-    const items = getMemoItem(display);
-  }, [display]);
   return (
     <CustomDialog
       className="m-auto p-4 relative w-full md:max-w-200 blue-900 c-white"
