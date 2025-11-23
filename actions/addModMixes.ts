@@ -13,11 +13,9 @@ export function addModMixes({
   const { mixname } = getFormFields<{ mixname: string }>(data);
 
   const allMixes = getMemoItem<MixModsType[]>("mixes") || [];
-  setMemoItem(
-    "mixes",
-    allMixes
-      .filter(({ name }) => name !== mixname)
-      .push({ name: mixname, modifiers })
-  );
+  setMemoItem("mixes", [
+    ...allMixes.filter(({ name }) => name !== mixname),
+    { name: mixname, modifiers },
+  ]);
   return true;
 }
