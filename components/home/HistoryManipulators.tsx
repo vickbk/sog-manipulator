@@ -6,48 +6,41 @@ import {
   HistoryModifierAddFunction,
   ModifierType,
 } from "@lib/types/modifier-types";
+import CustomDialog from "@components/common/CustomDialog";
+import DialogCloser from "@components/common/DialogCloser";
 
 export default function HistoryManipulators({
-  hideHistory,
+  showHistory: hideHistory,
   addModifier,
 }: {
-  hideHistory: (hide: false) => void;
+  showHistory: (hide: false) => void;
   addModifier: HistoryModifierAddFunction;
 }) {
-  const dialogElement = useRef<HTMLDialogElement>(null);
   const [display, setDisplay] = useState<"modifiers" | "mixes">("modifiers");
   const displays = {
     modifiers: <ModifiersHistory addModifier={addModifier} />,
     mixes: <></>,
   };
   useEffect(() => {
-    dialogElement.current?.showModal();
-  }, []);
-  useEffect(() => {
     const items = getMemoItem(display);
-    console.log(items);
   }, [display]);
   return (
-    <dialog
+    <CustomDialog
       className="m-auto p-4 relative w-full md:max-w-200 blue-900 c-white"
-      ref={dialogElement}
+      isOpen={true}
+      onClose={() => hideHistory(false)}
     >
-      <button
-        className="p-4 absolute right-0 rounded-lg top-0 c-blue-900 white"
-        type="button"
-        onClick={() => hideHistory(false)}
-      >
-        <XIcon />{" "}
-        <span className="sr-only">Fermer l'historique de manipilateurs</span>
-      </button>
+      <DialogCloser onClose={hideHistory}>
+        Fermer l'historique de manipilateurs
+      </DialogCloser>
       <ul className="flex gap-4 justify-center">
         {(
           [
             { text: "Manipulateurs", index: "modifiers" },
             { text: "Combinaisons", index: "mixes" },
           ] as const
-        ).map(({ text, index }) => (
-          <li key={text}>
+        ).map(({ text, index }, key) => (
+          <li key={key}>
             <button
               className={`py-4 ${
                 display === index ? "border-b-2 outline-0" : ""
@@ -66,6 +59,6 @@ export default function HistoryManipulators({
         </h4>
         {displays[display]}
       </section>
-    </dialog>
+    </CustomDialog>
   );
 }

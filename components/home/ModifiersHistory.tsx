@@ -29,6 +29,7 @@ export default function ModifierHistory({
           modifierKey={key}
           removeModifier={removeModifier}
           addModifier={addModifier}
+          key={key}
         />
       ))}
     </ul>
