@@ -1,11 +1,6 @@
-import XIcon from "@components/common/icons/XIcon";
-import getMemoItem from "@lib/memorization/get-item";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import ModifiersHistory from "./ModifiersHistory";
-import {
-  HistoryModifierAddFunction,
-  ModifierType,
-} from "@lib/types/modifier-types";
+import { HistoryModifierAddFunction } from "@lib/types/modifier-types";
 import CustomDialog from "@components/common/CustomDialog";
 import DialogCloser from "@components/common/DialogCloser";
 import MixesManipulators from "./MixesManipulators";

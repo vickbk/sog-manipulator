@@ -1,9 +1,6 @@
-import ArrowLeftRight from "@components/common/icons/ArrowLeftRight";
 import ClockIcon from "@components/common/icons/ClockIcon";
-import PencilIcon from "@components/common/icons/PencilIcon";
-import TrashIcon from "@components/common/icons/TrashIcon";
 import { ModifierType } from "@lib/types/modifier-types";
-import { CSSProperties, useState } from "react";
+import { useState } from "react";
 import HistoryManipulators from "./HistoryManipulators";
 import ModifierElement from "@components/common/ModifierElement";
 import FloppyIcon from "@components/common/icons/FloppyIcon";

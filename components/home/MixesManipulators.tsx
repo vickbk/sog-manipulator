@@ -2,7 +2,6 @@ import ArrowUpCircle from "@components/common/icons/ArrowUpCircle";
 import TrashIcon from "@components/common/icons/TrashIcon";
 import ModifierElement from "@components/common/ModifierElement";
 import { getModMixes } from "@lib/get-mod-mixes";
-import setMemoItem from "@lib/memorization/set-item";
 import { MixModsType } from "@lib/types/modifier-types";
 import { CSSProperties, useEffect, useState } from "react";
 

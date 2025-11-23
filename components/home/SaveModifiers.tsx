@@ -5,7 +5,7 @@ import FloppyIcon from "@components/common/icons/FloppyIcon";
 import InputWithLabel from "@components/common/InputWithLabel";
 import ModifierElement from "@components/common/ModifierElement";
 import { ModifierType } from "@lib/types/modifier-types";
-import { useActionState, useEffect, useRef, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 
 export default function SaveModifier({
   showSaveForm,
