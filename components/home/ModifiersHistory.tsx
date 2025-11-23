@@ -18,9 +18,22 @@ export default function ModifierHistory({
     setMemoItem("modifiers", remaining);
     setModifiers(remaining);
   };
+
+  const [added, setAdded] = useState<number[]>([]);
+  const addHistoricalModifier = (modifier: ModifierType) => {
+    addModifier(modifier);
+    setAdded([
+      ...added,
+      modifiers.findIndex(
+        ({ text, replacement }) =>
+          text === modifier.text && replacement === modifier.replacement
+      ),
+    ]);
+  };
   useEffect(() => {
     setModifiers(getMemoItem("modifiers") || []);
   }, []);
+  useEffect(() => console.log(added), [added]);
   return (
     <ul className="flex gap-4 flex-wrap">
       {modifiers.map((modifier, key) => (
@@ -28,7 +41,9 @@ export default function ModifierHistory({
           modifier={modifier}
           modifierKey={key}
           removeModifier={removeModifier}
-          addModifier={addModifier}
+          addModifier={
+            added.indexOf(key) === -1 ? addHistoricalModifier : undefined
+          }
           key={key}
         />
       ))}
