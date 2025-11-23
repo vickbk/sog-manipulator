@@ -1,6 +1,5 @@
 import getFormFields from "@lib/get-form-fields";
-import { getModMixes } from "@lib/get-mod-mixes";
-import setMemoItem from "@lib/memorization/set-item";
+import { getModMixes, setModMixes } from "@lib/mod-mixes";
 import { ModifierType } from "@lib/types/modifier-types";
 
 export function addModMixes({
@@ -13,7 +12,7 @@ export function addModMixes({
   const { mixname } = getFormFields<{ mixname: string }>(data);
 
   const allMixes = getModMixes();
-  setMemoItem("mixes", [
+  setModMixes([
     ...allMixes.filter(({ name }) => name !== mixname),
     { name: mixname, modifiers },
   ]);
