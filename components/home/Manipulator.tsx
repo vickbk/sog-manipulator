@@ -49,6 +49,7 @@ export default function Manipulator() {
         removeModifier={removeModifier}
         editModifier={editModifier}
         modifiers={modifiers}
+        setModifiers={setModifiers}
         addHistoryModifier={addHistoricalModifier}
       />
       <form className="flex gap-4 items-center" action={addModifierAction}>

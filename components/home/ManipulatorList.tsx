@@ -1,5 +1,5 @@
 import ClockIcon from "@components/common/icons/ClockIcon";
-import { ModifierType } from "@lib/types/modifier-types";
+import { ModifiersSetter, ModifierType } from "@lib/types/modifier-types";
 import { useState } from "react";
 import HistoryManipulators from "./HistoryManipulators";
 import ModifierElement from "@components/common/ModifierElement";
@@ -11,8 +11,10 @@ export default function ManipulatorList({
   removeModifier,
   editModifier,
   addHistoryModifier,
+  setModifiers,
 }: {
   modifiers: ModifierType[];
+  setModifiers: ModifiersSetter;
   removeModifier: (id: number) => void;
   editModifier: (id: number) => void;
   addHistoryModifier: (modifier: ModifierType) => void;
@@ -51,6 +53,7 @@ export default function ManipulatorList({
         <HistoryManipulators
           showHistory={setShowHistory}
           addModifier={addHistoryModifier}
+          setModifiers={setModifiers}
         />
       )}
       {showSave && (

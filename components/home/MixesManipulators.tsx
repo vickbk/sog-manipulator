@@ -2,10 +2,16 @@ import ArrowUpCircle from "@components/common/icons/ArrowUpCircle";
 import TrashIcon from "@components/common/icons/TrashIcon";
 import ModifierElement from "@components/common/ModifierElement";
 import { getModMixes, setModMixes } from "@lib/mod-mixes";
-import { MixModsType } from "@lib/types/modifier-types";
+import { MixModsType, ModifiersSetter } from "@lib/types/modifier-types";
 import { CSSProperties, useEffect, useState } from "react";
 
-export default function MixesManipulators() {
+export default function MixesManipulators({
+  setModifiers,
+  closeDialog,
+}: {
+  setModifiers: ModifiersSetter;
+  closeDialog: () => void;
+}) {
   const [mixes, setMixes] = useState<MixModsType[]>([]);
 
   const deleteMix = (id: number) => {
@@ -50,7 +56,10 @@ export default function MixesManipulators() {
                 className="p-2 white rounded-lg active"
                 type="button"
                 style={{ "--bg-accent": 0.25 } as CSSProperties}
-                onClick={() => {}}
+                onClick={() => {
+                  setModifiers(modifiers);
+                  closeDialog();
+                }}
               >
                 <ArrowUpCircle />
                 <span className="sr-only">Utiliser la combinaison.</span>

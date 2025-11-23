@@ -1,29 +1,52 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModifiersHistory from "./ModifiersHistory";
-import { HistoryModifierAddFunction } from "@lib/types/modifier-types";
+import {
+  HistoryModifierAddFunction,
+  HistoryPages,
+  ModifiersSetter,
+} from "@lib/types/modifier-types";
 import CustomDialog from "@components/common/CustomDialog";
 import DialogCloser from "@components/common/DialogCloser";
 import MixesManipulators from "./MixesManipulators";
+import getMemoItem from "@lib/memorization/get-item";
+import setMemoItem from "@lib/memorization/set-item";
 
 export default function HistoryManipulators({
-  showHistory: hideHistory,
+  showHistory,
   addModifier,
+  setModifiers,
 }: {
   showHistory: (hide: false) => void;
   addModifier: HistoryModifierAddFunction;
+  setModifiers: ModifiersSetter;
 }) {
-  const [display, setDisplay] = useState<"modifiers" | "mixes">("modifiers");
+  const dialogCloser = () => showHistory(false);
+  const [display, setDisplay] = useState<HistoryPages>("modifiers");
   const displays = {
     modifiers: <ModifiersHistory addModifier={addModifier} />,
-    mixes: <MixesManipulators />,
+    mixes: (
+      <MixesManipulators
+        closeDialog={dialogCloser}
+        setModifiers={setModifiers}
+      />
+    ),
   };
+
+  const setLastVisited = (page: HistoryPages) => {
+    setMemoItem("last-history-page", page);
+    setDisplay(page);
+  };
+
+  useEffect(() => {
+    setDisplay(getMemoItem<HistoryPages>("last-history-page") ?? "modifiers");
+  }, []);
   return (
     <CustomDialog
       className="m-auto p-4 relative w-full md:max-w-200 blue-900 c-white"
       isOpen={true}
-      onClose={() => hideHistory(false)}
+      onClose={() => showHistory(false)}
     >
-      <DialogCloser onClose={hideHistory}>
+      <DialogCloser onClose={showHistory}>
         Fermer l'historique de manipilateurs
       </DialogCloser>
       <ul className="flex gap-4 justify-center">
@@ -39,7 +62,7 @@ export default function HistoryManipulators({
                 display === index ? "border-b-2 outline-0" : ""
               }`}
               type="button"
-              onClick={() => setDisplay(index)}
+              onClick={() => setLastVisited(index)}
             >
               {text}
             </button>

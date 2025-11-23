@@ -9,3 +9,7 @@ export type MixModsType = {
   name: string;
   modifiers: ModifierType[];
 };
+
+export type ModifiersSetter = (modifiers: ModifierType[]) => void;
+
+export type HistoryPages = "modifiers" | "mixes";
