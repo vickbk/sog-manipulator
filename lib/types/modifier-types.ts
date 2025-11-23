@@ -4,3 +4,8 @@ export type ModifierType = {
 };
 
 export type HistoryModifierAddFunction = (modifier: ModifierType) => void;
+
+export type MixModsType = {
+  name: string;
+  modifiers: ModifierType[];
+};
