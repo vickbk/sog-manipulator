@@ -21,7 +21,9 @@ export default function ModifierElement({
   return (
     <li className="manipulator">
       <button className="manipulator__element active">
-        {text} <ArrowLeftRight /> {replacement}
+        <span className="sr-only">Le text "</span> {text}{" "}
+        <span className="sr-only">" sera remplacé par le texte "</span>{" "}
+        <ArrowLeftRight /> {replacement} <span className="sr-only">".</span>
       </button>
       <div className="manipulator__overlay">
         {addModifier && (
