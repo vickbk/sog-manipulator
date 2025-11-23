@@ -16,7 +16,8 @@ const manipulatorHelpers = (
     ModifierType | null,
     Dispatch<SetStateAction<ModifierType | null>>
   ],
-  textRef: RefObject<HTMLTextAreaElement | null>
+  textRef: RefObject<HTMLTextAreaElement | null>,
+  setText: (text: string) => void
 ) => {
   const mh = {
     removeModifier(id: number) {
@@ -47,7 +48,7 @@ const manipulatorHelpers = (
         .forEach(([toReplace, replacement]) => {
           text = text?.replace(toReplace, replacement);
         });
-      console.log(text);
+      setText(text || "");
     },
   };
   return mh;

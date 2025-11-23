@@ -7,7 +7,11 @@ import ManipulatorList from "./ManipulatorList";
 import ModifierAdder from "./ModifierAdder";
 import manipulatorHelpers from "@actions/manipulatorHelpers";
 
-export default function Manipulator() {
+export default function Manipulator({
+  setText,
+}: {
+  setText: (text: string) => void;
+}) {
   const [modifiers, setModifiers] = useState<ModifierType[]>([]);
   const [modifier, addModifierAction, modState] = useActionState(
     addModifier,
@@ -27,7 +31,8 @@ export default function Manipulator() {
     [modifiers, setModifiers],
     [modifier, addModifierAction, modState],
     [modEdit, setModEdit],
-    textRef
+    textRef,
+    setText
   );
 
   useEffect(handleModifierAddition, [modifier, modState]);
