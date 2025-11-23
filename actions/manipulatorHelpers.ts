@@ -38,7 +38,16 @@ const manipulatorHelpers = (
       }
     },
     manipulateText() {
-      const text = textRef.current?.value;
+      let text = textRef.current?.value;
+      modifiers
+        .map(
+          ({ text, replacement }) =>
+            [new RegExp(text, "g"), replacement] as const
+        )
+        .forEach(([toReplace, replacement]) => {
+          text = text?.replace(toReplace, replacement);
+        });
+      console.log(text);
     },
   };
   return mh;
