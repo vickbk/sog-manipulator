@@ -30,7 +30,7 @@ export default function SaveModifier({
   }, [response, saving]);
   return (
     <CustomDialog
-      className="m-auto relative p-4 blue-900 c-white w-full md:max-w-100"
+      className="m-auto relative p-4 c-blue-900 white w-full md:max-w-100"
       isOpen={true}
       onClose={() => showSaveForm(false)}
     >

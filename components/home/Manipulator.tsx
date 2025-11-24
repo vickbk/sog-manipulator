@@ -63,14 +63,11 @@ export default function Manipulator({
 
       <div className="flex flex-wrap gap-4 justify-center">
         <button
-          className="grow flex justify-center items-center gap-4 border rounded-lg active p-4"
+          className="blue-900 c-white flex justify-center items-center gap-4 border rounded-lg active p-4"
           type="button"
           onClick={manipulateText}
         >
           <ArrowUpDown /> Manipuler le text
-        </button>
-        <button className="grow rounded-lg p-4 c-blue-900 white" type="button">
-          Creer le format SOG
         </button>
       </div>
     </article>

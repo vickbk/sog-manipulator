@@ -42,7 +42,7 @@ export default function HistoryManipulators({
   }, []);
   return (
     <CustomDialog
-      className="m-auto p-4 relative w-full md:max-w-200 blue-900 c-white"
+      className="m-auto p-4 relative w-full md:max-w-200 c-blue-900 white"
       isOpen={true}
       onClose={() => showHistory(false)}
     >

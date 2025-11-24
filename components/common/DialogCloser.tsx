@@ -15,7 +15,7 @@ const DialogCloser = forwardRef<
   useImperativeHandle(ref, () => buttonRef.current!, []);
   return (
     <button
-      className="p-4 absolute right-0 rounded-lg top-0 c-blue-900 white"
+      className="p-4 absolute right-0 rounded-lg top-0 blue-900 c-white active"
       type="button"
       onClick={() => {
         onClose(false);

@@ -28,7 +28,7 @@ export default function ModifierElement({
       <div className="manipulator__overlay">
         {addModifier && (
           <button
-            className="p-2 blue-900 text-green-500 rounded-lg active"
+            className="p-2 white c-blue-900 text-green-500 rounded-lg active"
             type="button"
             style={{ "--bg-accent": 1 } as CSSProperties}
             onClick={() => addModifier({ text, replacement })}
@@ -39,7 +39,7 @@ export default function ModifierElement({
         )}
         {editModifier && (
           <button
-            className="p-2 blue-900 rounded-lg active"
+            className="p-2 white c-blue-900 rounded-lg active"
             type="button"
             style={{ "--bg-accent": 1 } as CSSProperties}
             onClick={() => editModifier(key)}
@@ -49,7 +49,7 @@ export default function ModifierElement({
           </button>
         )}
         <button
-          className="active p-2 blue-900 rounded-lg text-red-500"
+          className="active p-2 white rounded-lg text-red-500"
           type="button"
           style={{ "--bg-accent": 1 } as CSSProperties}
           onClick={() => removeModifier(key)}

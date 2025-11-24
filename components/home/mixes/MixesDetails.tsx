@@ -11,7 +11,7 @@ export default function MixesDetails({
 }) {
   return (
     <article
-      className="absolute p-4 inset-0 flex flex-col justify-center blue-900 rounded-lg"
+      className="absolute p-4 inset-0 flex flex-col justify-center c-blue-900 white rounded-lg"
       style={{ "--bg-accent": 0.8 } as CSSProperties}
     >
       <button
