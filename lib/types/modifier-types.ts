@@ -8,6 +8,7 @@ export type HistoryModifierAddFunction = (modifier: ModifierType) => void;
 export type MixModsType = {
   name: string;
   modifiers: ModifierType[];
+  description?: string;
 };
 
 export type ModifiersSetter = (modifiers: ModifierType[]) => void;

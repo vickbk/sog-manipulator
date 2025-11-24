@@ -40,7 +40,7 @@ export default function SaveModifier({
       <section>
         <h4 className="text-center">Enregistrer les manipulateurs de text</h4>
         <form className="py-8 grid gap-4" action={saveAction}>
-          <InputWithLabel label="Nom de la selection" name="mixname" />
+          <InputWithLabel label="Nom de la selection" name="mixname" required />
           <ul className="flex flex-wrap gap-4">
             {modList.map((modifier, key) => (
               <ModifierElement
@@ -51,6 +51,14 @@ export default function SaveModifier({
               />
             ))}
           </ul>
+          <label className="grid gap-2">
+            Description de la combinaison (optionnel)
+            <textarea
+              className="border active p-4 resize-none rounded-lg"
+              rows={3}
+              name="description"
+            ></textarea>
+          </label>
           <button
             className="flex justify-center items-center p-4 gap-4 active outline rounded-lg"
             type="submit"

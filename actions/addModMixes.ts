@@ -9,12 +9,17 @@ export function addModMixes({
   data: FormData;
   modifiers: ModifierType[];
 }) {
-  const { mixname } = getFormFields<{ mixname: string }>(data);
+  const { mixname, description } = getFormFields<{
+    mixname: string;
+    description: string;
+  }>(data);
 
-  const allMixes = getModMixes();
+  if (!mixname || modifiers.length === 0) {
+    return false;
+  }
   setModMixes([
-    ...allMixes.filter(({ name }) => name !== mixname),
-    { name: mixname, modifiers },
+    ...getModMixes().filter(({ name }) => name !== mixname),
+    { name: mixname, modifiers, description },
   ]);
   return true;
 }
