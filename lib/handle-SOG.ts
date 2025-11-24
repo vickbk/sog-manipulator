@@ -60,19 +60,12 @@ const getNearestTextBreaker = (text: string, reverse = false) => {
 
   let best: { breaker: string; index: number } | null = null;
 
+  const direction = reverse ? "lastIndexOf" : "indexOf";
   for (const breaker of breakers) {
-    if (!reverse) {
-      const idx = text.indexOf(breaker);
-      if (idx === -1) continue;
-      if (best === null || idx < best.index) best = { breaker, index: idx };
-    } else {
-      const idx = text.lastIndexOf(breaker);
-      if (idx === -1) continue;
-      // compute index in the reversed-string sense to keep existing callers unchanged
-      const revIndex = text.length - (idx + breaker.length);
-      if (best === null || revIndex < best.index)
-        best = { breaker, index: revIndex };
-    }
+    const idx = text[direction](breaker);
+    if (idx === -1) continue;
+    const index = reverse ? text.length - (idx + breaker.length) : idx;
+    if (best === null || index < best.index) best = { breaker, index };
   }
 
   return best;
