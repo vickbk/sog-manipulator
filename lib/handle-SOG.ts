@@ -56,20 +56,26 @@ export const breakLongLines = (
 };
 
 const getNearestTextBreaker = (text: string, reverse = false) => {
-  const breakersString = ". ,... ,! ,? ";
-  const breakers = (
-    reverse ? stringReverse(breakersString) : breakersString
-  ).split(",");
-  const stringToCheck = reverse ? stringReverse(text) : text;
-  const breakersObjs = breakers
-    .map((breaker) => ({
-      breaker,
-      index: stringToCheck.indexOf(breaker),
-    }))
-    .filter(({ index }) => index !== -1)
-    .sort((a, b) => a.index - b.index);
-  if (breakersObjs.length === 0) return null;
-  return breakersObjs[0];
+  const breakers = [". ", "... ", "! ", "? "];
+
+  let best: { breaker: string; index: number } | null = null;
+
+  for (const breaker of breakers) {
+    if (!reverse) {
+      const idx = text.indexOf(breaker);
+      if (idx === -1) continue;
+      if (best === null || idx < best.index) best = { breaker, index: idx };
+    } else {
+      const idx = text.lastIndexOf(breaker);
+      if (idx === -1) continue;
+      // compute index in the reversed-string sense to keep existing callers unchanged
+      const revIndex = text.length - (idx + breaker.length);
+      if (best === null || revIndex < best.index)
+        best = { breaker, index: revIndex };
+    }
+  }
+
+  return best;
 };
 
 const getBestTextBreaker = ({
