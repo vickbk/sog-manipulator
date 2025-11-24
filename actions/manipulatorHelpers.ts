@@ -1,5 +1,6 @@
 import { modifierExist } from "@lib/modifier/modifier-exist";
 import { ModifierType } from "@lib/types/modifier-types";
+import { clear } from "console";
 import { Dispatch, RefObject, SetStateAction } from "react";
 
 const manipulatorHelpers = (
@@ -49,6 +50,11 @@ const manipulatorHelpers = (
           text = text?.replace(toReplace, replacement);
         });
       setText(text || "");
+    },
+    clearForm() {
+      textRef.current!.value = "";
+      setModifiers([]);
+      setText("");
     },
   };
   return mh;

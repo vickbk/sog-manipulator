@@ -6,6 +6,7 @@ import { useActionState, useEffect, useRef, useState } from "react";
 import ManipulatorList from "./ManipulatorList";
 import ModifierAdder from "./ModifierAdder";
 import manipulatorHelpers from "@actions/manipulatorHelpers";
+import TrashIcon from "@components/common/icons/TrashIcon";
 
 export default function Manipulator({
   setText,
@@ -27,6 +28,7 @@ export default function Manipulator({
     addHistoricalModifier,
     handleModifierAddition,
     manipulateText,
+    clearForm,
   } = manipulatorHelpers(
     [modifiers, setModifiers],
     [modifier, addModifierAction, modState],
@@ -68,6 +70,13 @@ export default function Manipulator({
           onClick={manipulateText}
         >
           <ArrowUpDown /> Manipuler le text
+        </button>
+        <button
+          className=" flex justify-center items-center gap-4 border rounded-lg active p-4"
+          type="button"
+          onClick={clearForm}
+        >
+          <TrashIcon /> Effacer tout
         </button>
       </div>
     </article>
