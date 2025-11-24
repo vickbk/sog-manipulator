@@ -22,10 +22,12 @@ export default function MixesDetails({
         <XIcon />
         <span className="sr-only">Fermer les details de la combinaison</span>
       </button>
-      <h3 className="text-center text-2xl mb-4">{name}</h3>
-      <p>
-        {description || "Aucune description fournie pour cette combinaison."}
-      </p>
+      <div className="size-full overflow-y-auto">
+        <h3 className="text-center text-2xl mb-4">{name}</h3>
+        <p>
+          {description || "Aucune description fournie pour cette combinaison."}
+        </p>
+      </div>
     </article>
   );
 }

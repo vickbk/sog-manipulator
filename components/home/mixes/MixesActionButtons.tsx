@@ -44,12 +44,13 @@ export default function MixesActionButtons({
             additionalClasses: " text-red-500",
           },
         ] as const
-      ).map(({ click, text, icon, additionalClasses }) => (
+      ).map(({ click, text, icon, additionalClasses }, key) => (
         <button
           className={`p-2 white rounded-lg active${additionalClasses}`}
           type="button"
           style={{ "--bg-accent": 0.25 } as CSSProperties}
           onClick={click}
+          key={key}
         >
           {icon}
           <span className="sr-only">{text}</span>

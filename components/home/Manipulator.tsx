@@ -65,14 +65,14 @@ export default function Manipulator({
 
       <div className="flex flex-wrap gap-4 justify-center">
         <button
-          className="blue-900 c-white flex justify-center items-center gap-4 border rounded-lg active p-4"
+          className="md:grow blue-900 c-white flex justify-center items-center gap-4 border rounded-lg active p-4"
           type="button"
           onClick={manipulateText}
         >
           <ArrowUpDown /> Manipuler le text
         </button>
         <button
-          className=" flex justify-center items-center gap-4 border rounded-lg active p-4"
+          className="md:grow flex justify-center items-center gap-4 border rounded-lg active p-4"
           type="button"
           onClick={clearForm}
         >
