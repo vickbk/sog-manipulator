@@ -15,7 +15,7 @@ export default function MixesDetails({
       style={{ "--bg-accent": 0.8 } as CSSProperties}
     >
       <button
-        className="text-red-500 absolute top-2 right-2 p-4 active rounded-lg"
+        className="text-red-500 absolute -top-4 -right-4 outline p-2 active rounded-lg"
         onClick={closeDetails}
         type="button"
       >
