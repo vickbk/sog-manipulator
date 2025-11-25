@@ -10,8 +10,10 @@ import TrashIcon from "@components/common/icons/TrashIcon";
 
 export default function Manipulator({
   setText,
+  swipped,
 }: {
   setText: (text: string) => void;
+  swipped: boolean;
 }) {
   const [modifiers, setModifiers] = useState<ModifierType[]>([]);
   const [modifier, addModifierAction, modState] = useActionState(
@@ -40,7 +42,11 @@ export default function Manipulator({
   useEffect(handleModifierAddition, [modifier, modState]);
 
   return (
-    <article className="grid gap-4 text-lg">
+    <article
+      className={`grid gap-4 text-lg transition-transform duration-500${
+        swipped ? " md:-translate-x-[calc(100%+var(--spacing)*4)]" : ""
+      }`}
+    >
       <h2 className="text-center text-2xl">Manipulateur de text</h2>
 
       <label className="grid gap-2">
