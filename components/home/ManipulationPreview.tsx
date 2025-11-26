@@ -3,6 +3,7 @@ import { CopyIcon } from "@components/common/icons/CopyIcon";
 import { clipboardCopy } from "@lib/clipboard-copy";
 import { createSOGFormat } from "@lib/handle-SOG";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function ManipulationPreview({
   text,
@@ -18,6 +19,16 @@ export default function ManipulationPreview({
     setSogText(sog);
   };
 
+  const copySOGToClipboard = async () => {
+    if (sogText) {
+      const success = await clipboardCopy(sogText);
+      if (success) {
+        setSogText(null);
+        toast.success("Texte SOG copié dans le presse-papier !");
+      }
+    }
+  };
+
   return (
     <article
       className={`md:col-start-1 transition-transform duration-500${
@@ -31,12 +42,7 @@ export default function ManipulationPreview({
           Creer le format SOG
         </ActionButton>
         {sogText && (
-          <ActionButton
-            srText="le text SOG"
-            onClick={async () =>
-              (await clipboardCopy(sogText)) && setSogText(null)
-            }
-          >
+          <ActionButton srText="le text SOG" onClick={copySOGToClipboard}>
             <CopyIcon /> Copier
           </ActionButton>
         )}
