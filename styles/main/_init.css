@@ -51,3 +51,10 @@ body {
 button {
   @apply cursor-pointer;
 }
+
+dialog {
+  &::backdrop {
+    background-color: hsl(var(--background) / 0.8);
+    @apply backdrop-blur-sm;
+  }
+}
