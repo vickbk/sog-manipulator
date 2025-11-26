@@ -39,7 +39,6 @@ const CustomDialog = forwardRef<HTMLDialogElement, DialogProps>(
     return (
       <dialog ref={dialogRef} {...props}>
         {children}
-        <ToastContainer theme="system" />
       </dialog>
     );
   }
