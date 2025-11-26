@@ -15,7 +15,7 @@ export default function MainPage() {
         <Manipulator setText={setText} swipped={swipped} />
         <ManipulationPreview text={text} swipped={swipped} />
         <button
-          className="active absolute white c-blue-900 border p-4 inset-0 w-12 aspect-square rounded-lg hidden md:block m-auto"
+          className="active absolute white c-blue-900 border p-4 inset-x-0 w-12 aspect-square rounded-lg hidden md:block m-auto"
           type="button"
           style={{ "--bg-accent": 0.2 } as CSSProperties}
           onClick={() => setSwipped(!swipped)}

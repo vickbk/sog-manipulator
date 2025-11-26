@@ -46,7 +46,7 @@ export default function SaveModifier({
               <ModifierElement
                 modifier={modifier}
                 modifierKey={key}
-                removeModifier={deleteModifier}
+                actions={{ removeModifier: deleteModifier }}
                 key={key}
               />
             ))}

@@ -34,7 +34,9 @@ export default function MixElement({
             key={modKey}
             modifier={modifier}
             modifierKey={modKey}
-            removeModifier={(modKey) => deleteMixModifier(key, modKey)}
+            actions={{
+              removeModifier: (modKey) => deleteMixModifier(key, modKey),
+            }}
           />
         ))}
       </ul>

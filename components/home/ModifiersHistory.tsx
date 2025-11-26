@@ -40,10 +40,11 @@ export default function ModifierHistory({
         <ModifierElement
           modifier={modifier}
           modifierKey={key}
-          removeModifier={removeModifier}
-          addModifier={
-            added.indexOf(key) === -1 ? addHistoricalModifier : undefined
-          }
+          actions={{
+            removeModifier,
+            addModifier:
+              added.indexOf(key) === -1 ? addHistoricalModifier : undefined,
+          }}
           key={key}
         />
       ))}

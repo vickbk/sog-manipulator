@@ -64,8 +64,7 @@ export default function ManipulatorList({
           <ModifierElement
             modifier={modifier}
             modifierKey={key}
-            editModifier={editModifier}
-            removeModifier={removeModifier}
+            actions={{ editModifier, removeModifier }}
             key={key}
           />
         ))}
