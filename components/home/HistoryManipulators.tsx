@@ -48,9 +48,11 @@ export default function HistoryManipulators({
       isOpen={true}
       onClose={() => showHistory(false)}
     >
-      <DialogCloser onClose={showHistory}>
-        Fermer l'historique de manipilateurs
-      </DialogCloser>
+      <div className="sticky flex justify-end top-0">
+        <DialogCloser onClose={showHistory}>
+          Fermer l'historique de manipilateurs
+        </DialogCloser>
+      </div>
       <ul className="flex flex-wrap gap-x-4 justify-center">
         {(
           [

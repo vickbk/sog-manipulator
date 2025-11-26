@@ -46,6 +46,9 @@ body {
   @apply font-normal 
   flex flex-col
   min-h-screen;
+  &:has(dialog[open]) {
+    @apply overflow-hidden;
+  }
 }
 
 button {
