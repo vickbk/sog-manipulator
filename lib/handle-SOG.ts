@@ -1,6 +1,6 @@
-import { SOGSongHead } from "./types/SOG-types";
+import { SOGSong, SOGSongHead } from "./types/SOG-types";
 
-export const createSOGFormat = (text: string) => {
+export const createSOGFormat = (text: string, asString: boolean = false) => {
   const songs = text.split("{#}");
   const SOGSongs = songs.map((song) => {
     const head = getSOGSongHead(song);
@@ -8,10 +8,16 @@ export const createSOGFormat = (text: string) => {
     if (!head) return null;
     return { head, body };
   });
-  return SOGSongs.filter((song) => song !== null) as {
-    head: SOGSongHead;
-    body: string[];
-  }[];
+  const songsFiltered = SOGSongs.filter((song) => song !== null);
+  return asString
+    ? songsFiltered.map((song) => SOGSongToString(song)).join("\n\n")
+    : songsFiltered;
+};
+
+const SOGSongToString = (song: SOGSong) => {
+  const headString = `${song.head.number}\n${song.head.title}\n`;
+  const bodyString = song.body.join("\n");
+  return headString + bodyString;
 };
 
 const getSOGSongHead = (songText: string): null | SOGSongHead => {
@@ -23,9 +29,9 @@ const getSOGSongHead = (songText: string): null | SOGSongHead => {
   return { number, title };
 };
 
-const getSOGSongBody = (songText: string): string | string[] => {
+const getSOGSongBody = (songText: string) => {
   const [, ...body] = songText.replaceAll(/\$\$\$/g, "$$").split("$$");
-  if (body.length === 0) return "";
+  if (body.length === 0) return [""];
   return body.map((part) => breakLongLines(part).join("\n"));
 };
 

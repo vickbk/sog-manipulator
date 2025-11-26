@@ -1,4 +1,5 @@
 import { createSOGFormat } from "@lib/handle-SOG";
+import { useState } from "react";
 
 export default function ManipulationPreview({
   text,
@@ -7,8 +8,11 @@ export default function ManipulationPreview({
   text: string;
   swipped: boolean;
 }) {
+  const [sogText, setSogText] = useState(null);
   const createSOGFormatx = () => {
-    console.log(createSOGFormat(text));
+    const sog = createSOGFormat(text, true);
+    console.log(sog);
+    // setSogText(sog);
   };
   return (
     <article

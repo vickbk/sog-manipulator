@@ -5,5 +5,5 @@ export interface SOGSongHead {
 
 export interface SOGSong {
   head: SOGSongHead;
-  body: string | string[];
+  body: string[];
 }
