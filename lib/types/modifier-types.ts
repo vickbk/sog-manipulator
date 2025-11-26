@@ -5,12 +5,6 @@ export type ModifierType = {
 
 export type HistoryModifierAddFunction = (modifier: ModifierType) => void;
 
-export type MixModsType = {
-  name: string;
-  modifiers: ModifierType[];
-  description?: string;
-};
-
 export type ModifiersSetter = (modifiers: ModifierType[]) => void;
 
 export type HistoryPages = "modifiers" | "mixes";
@@ -33,3 +27,20 @@ export type ModifierOverlayData = [
   string,
   string | undefined
 ][];
+
+export type MixModsType = {
+  name: string;
+  modifiers: ModifierType[];
+  description?: string;
+};
+
+export type MixElementProps = {
+  mix: MixModsType;
+  mixKey: number;
+  mixHelpersFunctions: {
+    setModifiers: (mods: MixModsType["modifiers"]) => void;
+    closeDialog: () => void;
+    deleteMix: (id: number) => void;
+    deleteMixModifier: (mixId: number, modId: number) => void;
+  };
+};

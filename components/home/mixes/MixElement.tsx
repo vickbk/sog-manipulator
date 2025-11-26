@@ -1,29 +1,15 @@
 import ModifierElement from "@components/common/ModifierElement";
 import MixesActionButtons from "./MixesActionButtons";
 import MixesDetails from "./MixesDetails";
-import { MixModsType } from "@lib/types/modifier-types";
+import { MixElementProps } from "@lib/types/modifier-types";
 import { useState } from "react";
 
 export default function MixElement({
   mix,
   mixKey: key,
-  mixHelpersFunctions: {
-    setModifiers,
-    closeDialog,
-    deleteMix,
-    deleteMixModifier,
-  },
-}: {
-  mix: MixModsType;
-  mixKey: number;
-  mixHelpersFunctions: {
-    setModifiers: (mods: MixModsType["modifiers"]) => void;
-    closeDialog: () => void;
-    deleteMix: (id: number) => void;
-    deleteMixModifier: (mixId: number, modId: number) => void;
-  };
-}) {
-  const { name, modifiers, description } = mix;
+  mixHelpersFunctions: { deleteMixModifier, ...otherHelpers },
+}: MixElementProps) {
+  const { name, modifiers } = mix;
   const [showDetails, setShowDetails] = useState(false);
   return (
     <article className="relative border rounded-lg p-4 grow md:max-w-48/100">
@@ -44,9 +30,7 @@ export default function MixElement({
         modifiers={modifiers}
         mixKey={key}
         actionsHelpers={{
-          setModifiers,
-          closeDialog,
-          deleteMix,
+          ...otherHelpers,
           showDetails() {
             setShowDetails(true);
           },
