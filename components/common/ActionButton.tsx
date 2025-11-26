@@ -14,6 +14,7 @@ export const ActionButton = forwardRef<
     <button
       className={`flex justify-center items-center gap-4 border rounded-lg active p-4 ${moreClass}`}
       type={type}
+      {...props}
     >
       {children}
       {srText && <SROnly text="action button" />}
