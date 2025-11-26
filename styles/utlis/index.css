@@ -1,8 +1,3 @@
-@import "./_background.css";
-@import "./_header.css";
-@import "./_navbar.css";
-@import "./_titles.css";
-@import "./_big-button.css";
-@import "./_planet.css";
-@import "./_crew.css";
-@import "./_tech.css";
+@import "./_c-input.css";
+@import "./_active.css";
+@import "./_manipulator.css";

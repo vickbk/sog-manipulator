@@ -1,0 +1,14 @@
+.active {
+  &.blue-900 {
+    @apply border-2;
+    border-color: hsl(var(--background) / var(--border-accent, 1));
+  }
+  &:focus,
+  &:hover,
+  &:active {
+    @apply outline-2;
+    &.blue-900 {
+      outline-color: hsl(var(--foreground) / var(--border-accent, 1));
+    }
+  }
+}

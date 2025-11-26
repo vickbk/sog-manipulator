@@ -1,0 +1,25 @@
+.c-input {
+  @apply block relative py-4;
+}
+
+.c-input__field {
+  @apply border-b 
+  block w-full 
+  p-2 pt-0 mt-4;
+  &:focus,
+  &:active,
+  &:hover {
+    @apply outline-0 border-b-2;
+  }
+  &:not(&:focus):placeholder-shown {
+    & + .c-input__label {
+      @apply translate-8;
+    }
+  }
+}
+
+.c-input__label {
+  @apply absolute top-0 
+  transition-transform 
+  duration-700;
+}

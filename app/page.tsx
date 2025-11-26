@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Metadata } from "next";
+import MainPage from "../components/home/MainPage";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,5 +18,5 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <></>;
+  return <MainPage />;
 }
