@@ -3,7 +3,7 @@ import { ActionButton } from "@components/common/ActionButton";
 import { CloudDownloadIcon } from "@components/common/icons/CloudDownloadIcon";
 import InputWithLabel from "@components/common/InputWithLabel";
 import Link from "next/link";
-import { use, useActionState, useEffect, useRef } from "react";
+import { useActionState, useEffect, useRef } from "react";
 
 export const DownloadManipulators = () => {
   const [data, downloadAction, state] = useActionState(
