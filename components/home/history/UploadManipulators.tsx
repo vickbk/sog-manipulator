@@ -4,6 +4,7 @@ import { FileIcon } from "@components/common/icons/FileIcon";
 import FloppyIcon from "@components/common/icons/FloppyIcon";
 import { SROnly } from "@components/common/SROnly";
 import { useActionState, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export const UploadManipulators = () => {
   const [uploadResult, uploadAction, uploadState] = useActionState(
@@ -18,9 +19,9 @@ export const UploadManipulators = () => {
   useEffect(() => {
     if (!uploadState && uploadResult !== null) {
       if (uploadResult === true) {
-        console.log("Manipulateurs importés avec succès !");
+        toast.success("Manipulateurs importés avec succès !");
       } else {
-        console.log("Échec de l'importation des manipulateurs.");
+        toast.error("Échec de l'importation des manipulateurs.");
       }
       setFileName("");
     }

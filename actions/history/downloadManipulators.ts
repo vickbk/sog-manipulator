@@ -13,13 +13,12 @@ export async function downloadManipulators(_: unknown, data: FormData) {
       type: "application/json",
     });
     const url = await URL.createObjectURL(blob);
-    toast.success("Manipulators ready for download.");
     return {
       url,
       filename: filename.endsWith(".json") ? filename : `${filename}.json`,
     };
   } catch (error) {
-    toast.error("Failed to download manipulators.");
+    toast.error("Une erreur s'est produite pendant le telechargement.");
     console.error("Error downloading manipulators:", error);
     return null;
   }
