@@ -17,6 +17,7 @@ export default function ManipulationPreview({
     const sog = createSOGFormat(text, true) as string;
     console.log(sog);
     setSogText(sog);
+    toast.success("Le format SOG a ete cree avec succes !");
   };
 
   const copySOGToClipboard = async () => {
@@ -31,17 +32,17 @@ export default function ManipulationPreview({
 
   return (
     <article
-      className={`md:col-start-1 transition-transform duration-500${
+      className={`md:col-start-1 contain-size transition-transform duration-500${
         swipped ? " md:translate-x-[calc(100%+var(--spacing)*4)]" : ""
       } md:row-start-1 flex flex-col`}
     >
       <h2 className="text-center text-2xl">Texte déjà modifié</h2>
-      <p className="grow py-4">{text}</p>
+      <p className="grow py-4 overflow-y-auto">{text}</p>
       <footer className="flex justify-center gap-4 items-center border-t pt-4">
         <ActionButton moreClass="blue-900 c-white" onClick={createSOGFormatx}>
           Creer le format SOG
         </ActionButton>
-        {sogText && (
+        {text && sogText && (
           <ActionButton srText="le text SOG" onClick={copySOGToClipboard}>
             <CopyIcon /> Copier
           </ActionButton>

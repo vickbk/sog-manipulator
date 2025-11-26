@@ -6,6 +6,7 @@ import InputWithLabel from "@components/common/InputWithLabel";
 import ModifierElement from "@components/common/ModifierElement";
 import { ModifierType } from "@lib/types/modifier-types";
 import { useActionState, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export default function SaveModifier({
   showSaveForm,
@@ -26,6 +27,7 @@ export default function SaveModifier({
   useEffect(() => {
     if (!saving && response) {
       showSaveForm(false);
+      toast.success("Modificateurs enregistrés avec succès !");
     }
   }, [response, saving]);
   return (

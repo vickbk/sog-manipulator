@@ -46,8 +46,18 @@ body {
   @apply font-normal 
   flex flex-col
   min-h-screen;
+  &:has(dialog[open]) {
+    @apply overflow-hidden;
+  }
 }
 
 button {
   @apply cursor-pointer;
+}
+
+dialog {
+  &::backdrop {
+    background-color: hsl(var(--background) / 0.8);
+    @apply backdrop-blur-sm;
+  }
 }
