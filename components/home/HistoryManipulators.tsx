@@ -10,6 +10,7 @@ import DialogCloser from "@components/common/DialogCloser";
 import MixesManipulators from "./MixesManipulators";
 import getMemoItem from "@lib/memorization/get-item";
 import setMemoItem from "@lib/memorization/set-item";
+import { ExternalManager } from "./history/ExternalManager";
 
 export default function HistoryManipulators({
   showHistory,
@@ -30,6 +31,7 @@ export default function HistoryManipulators({
         setModifiers={setModifiers}
       />
     ),
+    external: <ExternalManager />,
   };
 
   const setLastVisited = (page: HistoryPages) => {
@@ -49,16 +51,17 @@ export default function HistoryManipulators({
       <DialogCloser onClose={showHistory}>
         Fermer l'historique de manipilateurs
       </DialogCloser>
-      <ul className="flex gap-4 justify-center">
+      <ul className="flex flex-wrap gap-x-4 justify-center">
         {(
           [
             { text: "Manipulateurs", index: "modifiers" },
             { text: "Combinaisons", index: "mixes" },
+            { text: "Sauvegarde", index: "external" },
           ] as const
         ).map(({ text, index }, key) => (
           <li key={key}>
             <button
-              className={`py-4 ${
+              className={`pt-4 ${
                 display === index ? "border-b-2 outline-0" : ""
               }`}
               type="button"

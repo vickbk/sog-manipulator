@@ -7,7 +7,7 @@ export type HistoryModifierAddFunction = (modifier: ModifierType) => void;
 
 export type ModifiersSetter = (modifiers: ModifierType[]) => void;
 
-export type HistoryPages = "modifiers" | "mixes";
+export type HistoryPages = "modifiers" | "mixes" | "external";
 
 export type ModifierActions = {
   removeModifier: (key: number) => void;
