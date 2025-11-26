@@ -1,5 +1,6 @@
 import { ActionButton } from "@components/common/ActionButton";
 import { CopyIcon } from "@components/common/icons/CopyIcon";
+import { clipboardCopy } from "@lib/clipboard-copy";
 import { createSOGFormat } from "@lib/handle-SOG";
 import { useState } from "react";
 
@@ -16,6 +17,7 @@ export default function ManipulationPreview({
     console.log(sog);
     setSogText(sog);
   };
+
   return (
     <article
       className={`md:col-start-1 transition-transform duration-500${
@@ -29,7 +31,12 @@ export default function ManipulationPreview({
           Creer le format SOG
         </ActionButton>
         {sogText && (
-          <ActionButton srText="le text SOG">
+          <ActionButton
+            srText="le text SOG"
+            onClick={async () =>
+              (await clipboardCopy(sogText)) && setSogText(null)
+            }
+          >
             <CopyIcon /> Copier
           </ActionButton>
         )}
