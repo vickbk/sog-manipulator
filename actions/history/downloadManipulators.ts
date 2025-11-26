@@ -3,15 +3,21 @@ import { getModMixes } from "@lib/mod-mixes";
 import { getModifiers } from "@lib/modifier/handle-modifiers";
 
 export async function downloadManipulators(_: unknown, data: FormData) {
-  const { name } = getFormFields<{ name: string }>(data);
-  const mixes = getModMixes();
-  const modifiers = getModifiers();
+  const { filename: filename } = getFormFields<{ filename: string }>(data);
+  try {
+    const mixes = getModMixes();
+    const modifiers = getModifiers();
 
-  const content = JSON.stringify({ mixes, modifiers }, null, 2);
-  const blob = new Blob([content], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  return {
-    url,
-    name: name.endsWith(".json") ? name : `${name}.json`,
-  };
+    const blob = new Blob([JSON.stringify({ mixes, modifiers }, null, 2)], {
+      type: "application/json",
+    });
+    const url = await URL.createObjectURL(blob);
+    return {
+      url,
+      filename: filename.endsWith(".json") ? filename : `${filename}.json`,
+    };
+  } catch (error) {
+    console.error("Error downloading manipulators:", error);
+    return null;
+  }
 }
