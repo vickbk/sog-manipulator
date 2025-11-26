@@ -5,6 +5,7 @@ import {
   useImperativeHandle,
   useRef,
 } from "react";
+import { ToastContainer } from "react-toastify";
 
 type DialogProps = {
   isOpen: boolean;
@@ -38,6 +39,7 @@ const CustomDialog = forwardRef<HTMLDialogElement, DialogProps>(
     return (
       <dialog ref={dialogRef} {...props}>
         {children}
+        <ToastContainer theme="system" />
       </dialog>
     );
   }
