@@ -4,6 +4,7 @@ import PencilIcon from "./icons/PencilIcon";
 import TrashIcon from "./icons/TrashIcon";
 import { ModifierType } from "@lib/types/modifier-types";
 import PlusIcon from "./icons/PlusIcon";
+import { ModifierElementAction } from "./ModifierElementAction";
 
 export default function ModifierElement({
   modifier: { text, replacement },
@@ -26,37 +27,39 @@ export default function ModifierElement({
         <ArrowLeftRight /> {replacement} <span className="sr-only">".</span>
       </button>
       <div className="manipulator__overlay">
-        {addModifier && (
-          <button
-            className="p-2 white c-blue-900 text-green-500 rounded-lg active"
-            type="button"
-            style={{ "--bg-accent": 1 } as CSSProperties}
-            onClick={() => addModifier({ text, replacement })}
-          >
-            <PlusIcon />
-            <span className="sr-only">Ajouter le manipulateur</span>
-          </button>
+        {(
+          [
+            [
+              addModifier && (() => addModifier({ text, replacement })),
+              <PlusIcon />,
+              "Ajouter le manipulateur.",
+              "text-green-500",
+            ],
+            [
+              editModifier && (() => editModifier(key)),
+              <PencilIcon />,
+              "Modifier le manipulateur.",
+            ],
+            [
+              () => removeModifier(key),
+              <TrashIcon />,
+              "Supprimer le manipulateur.",
+              "text-red-500",
+            ],
+          ] as const
+        ).map(
+          ([action, Icon, text, textColor], index) =>
+            action && (
+              <ModifierElementAction
+                text={text}
+                textColor={textColor}
+                action={action}
+                key={index}
+              >
+                {Icon}
+              </ModifierElementAction>
+            )
         )}
-        {editModifier && (
-          <button
-            className="p-2 white c-blue-900 rounded-lg active"
-            type="button"
-            style={{ "--bg-accent": 1 } as CSSProperties}
-            onClick={() => editModifier(key)}
-          >
-            <PencilIcon />
-            <span className="sr-only">Modifier le manipulateur</span>
-          </button>
-        )}
-        <button
-          className="active p-2 white rounded-lg text-red-500"
-          type="button"
-          style={{ "--bg-accent": 1 } as CSSProperties}
-          onClick={() => removeModifier(key)}
-        >
-          <TrashIcon />
-          <span className="sr-only">Supprimer le manipulateur</span>
-        </button>
       </div>
     </li>
   );

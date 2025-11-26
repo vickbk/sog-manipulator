@@ -7,7 +7,7 @@ import { CSSProperties, useState } from "react";
 import ArrowLeftRight from "@components/common/icons/ArrowLeftRight";
 
 export default function MainPage() {
-  const [text, setText] = useState("Nothing yet");
+  const [text, setText] = useState("");
   const [swipped, setSwipped] = useState(false);
   return (
     <MainContainer>
@@ -15,7 +15,7 @@ export default function MainPage() {
         <Manipulator setText={setText} swipped={swipped} />
         <ManipulationPreview text={text} swipped={swipped} />
         <button
-          className="absolute white c-blue-900 border p-4 inset-0 w-12 aspect-square rounded-lg hidden md:block  m-auto"
+          className="active absolute white c-blue-900 border p-4 inset-0 w-12 aspect-square rounded-lg hidden md:block m-auto"
           type="button"
           style={{ "--bg-accent": 0.2 } as CSSProperties}
           onClick={() => setSwipped(!swipped)}
