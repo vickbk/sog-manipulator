@@ -4,6 +4,7 @@ import getFormFields from "@lib/get-form-fields";
 import { objectToFormData } from "@lib/object-to-formdata";
 import { readJsonFile } from "@lib/read-json-file";
 import { MixModsType, ModifierType } from "@lib/types/modifier-types";
+import { toast } from "react-toastify";
 
 export const uploadModifiers = async (_: unknown, data: FormData) => {
   try {
@@ -16,8 +17,10 @@ export const uploadModifiers = async (_: unknown, data: FormData) => {
     if (!mixes || !modifiers) throw new Error("Invalid file format");
     addMixes(mixes);
     addModifiers(modifiers);
+    toast.success("Modifiers uploaded successfully.");
     return true;
   } catch (error: any) {
+    toast.error(`Failed to upload modifiers: ${error.message}`);
     console.error("Error uploading modifiers:", error);
     return null;
   }

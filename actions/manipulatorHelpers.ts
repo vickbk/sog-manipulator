@@ -1,7 +1,7 @@
 import { modifierExist } from "@lib/modifier/modifier-exist";
 import { ModifierType } from "@lib/types/modifier-types";
-import { clear } from "console";
 import { Dispatch, RefObject, SetStateAction } from "react";
+import { toast } from "react-toastify";
 
 const manipulatorHelpers = (
   [modifiers, setModifiers]: [
@@ -49,6 +49,7 @@ const manipulatorHelpers = (
         .forEach(([toReplace, replacement]) => {
           text = text?.replace(toReplace, replacement);
         });
+      toast.success("Le text a ete manipule avec succes !");
       setText(text || "");
     },
     clearForm() {

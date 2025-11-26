@@ -1,6 +1,7 @@
 import getFormFields from "@lib/get-form-fields";
 import { getModMixes } from "@lib/mod-mixes";
 import { getModifiers } from "@lib/modifier/handle-modifiers";
+import { toast } from "react-toastify";
 
 export async function downloadManipulators(_: unknown, data: FormData) {
   const { filename: filename } = getFormFields<{ filename: string }>(data);
@@ -12,11 +13,13 @@ export async function downloadManipulators(_: unknown, data: FormData) {
       type: "application/json",
     });
     const url = await URL.createObjectURL(blob);
+    toast.success("Manipulators ready for download.");
     return {
       url,
       filename: filename.endsWith(".json") ? filename : `${filename}.json`,
     };
   } catch (error) {
+    toast.error("Failed to download manipulators.");
     console.error("Error downloading manipulators:", error);
     return null;
   }

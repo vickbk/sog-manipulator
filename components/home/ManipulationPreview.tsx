@@ -17,6 +17,7 @@ export default function ManipulationPreview({
     const sog = createSOGFormat(text, true) as string;
     console.log(sog);
     setSogText(sog);
+    toast.success("Le format SOG a ete cree avec succes !");
   };
 
   const copySOGToClipboard = async () => {
@@ -41,7 +42,7 @@ export default function ManipulationPreview({
         <ActionButton moreClass="blue-900 c-white" onClick={createSOGFormatx}>
           Creer le format SOG
         </ActionButton>
-        {sogText && (
+        {text && sogText && (
           <ActionButton srText="le text SOG" onClick={copySOGToClipboard}>
             <CopyIcon /> Copier
           </ActionButton>
