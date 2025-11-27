@@ -7,6 +7,7 @@ import ManipulatorList from "./ManipulatorList";
 import ModifierAdder from "./ModifierAdder";
 import manipulatorHelpers from "@actions/manipulatorHelpers";
 import TrashIcon from "@components/common/icons/TrashIcon";
+import { ActionButton } from "@components/common/ActionButton";
 
 export default function Manipulator({
   setText,
@@ -23,6 +24,8 @@ export default function Manipulator({
   const [modEdit, setModEdit] = useState<ModifierType | null>(null);
 
   const textRef = useRef<HTMLTextAreaElement>(null);
+
+  const enableClear = modEdit || modifiers.length > 0;
 
   const {
     removeModifier,
@@ -70,20 +73,18 @@ export default function Manipulator({
       <ModifierAdder modEdit={modEdit} addModifierAction={addModifierAction} />
 
       <div className="flex flex-wrap gap-4 justify-center">
-        <button
-          className="md:grow blue-900 c-white flex justify-center items-center gap-4 border rounded-lg active p-4"
-          type="button"
+        <ActionButton
+          moreClass="md:grow blue-900 c-white"
           onClick={manipulateText}
         >
           <ArrowUpDown /> Manipuler le text
-        </button>
-        <button
-          className="md:grow flex justify-center items-center gap-4 border rounded-lg active p-4"
-          type="button"
-          onClick={clearForm}
-        >
-          <TrashIcon /> Effacer tout
-        </button>
+        </ActionButton>
+        {enableClear && (
+          <ActionButton moreClass="md:grow" onClick={clearForm}>
+            <TrashIcon />
+            Effacer tout
+          </ActionButton>
+        )}
       </div>
     </article>
   );
