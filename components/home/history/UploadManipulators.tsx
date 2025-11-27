@@ -30,8 +30,7 @@ export const UploadManipulators = () => {
   return (
     <form className="grid gap-4 items-center" action={uploadAction}>
       <h5 className="mb-2 text-xl text-center font-semibold">
-        Importer une liste de manipulateurs actuellement enregistés sur cet
-        appareil
+        Importer une liste de manipulateurs sur cet appareil
       </h5>
 
       <label className="cursor-pointer flex justify-center gap-4 items-center">

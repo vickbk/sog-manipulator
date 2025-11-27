@@ -23,8 +23,7 @@ export const DownloadManipulators = () => {
   return (
     <form className="grid gap-4" action={downloadAction}>
       <h5 className="mb-2 text-xl text-center font-semibold">
-        Exporter la liste de manipulateurs actuellement enregistés sur cet
-        appareil
+        Exporter la liste de manipulateurs actuellement enregistés
       </h5>
       <InputWithLabel
         label="Nom du fichier"
